@@ -22,8 +22,7 @@ public class PoruchenieDAO {
     }
 
     public Poruchenie getPoruchenie(long id){
-        Poruchenie poruchenie = session.load(Poruchenie.class, id);
-        return poruchenie;
+         return session.load(Poruchenie.class, id);
     }
 
     public void updatePoruchenie(Poruchenie poruchenie){

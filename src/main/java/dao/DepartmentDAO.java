@@ -22,8 +22,7 @@ public class DepartmentDAO {
     }
 
     public Department getDepartment(long id){
-        Department department = session.load(Department.class, id);
-        return department;
+        return session.load(Department.class, id);
     }
 
     public void updateDepartment(Department department){
