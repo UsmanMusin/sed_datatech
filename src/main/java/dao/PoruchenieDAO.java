@@ -1,6 +1,7 @@
 package dao;
 
 import model.Employee;
+import model.Poruchenie;
 import org.hibernate.Session;
 import util.hibernateUtil;
 
@@ -14,26 +15,26 @@ public class PoruchenieDAO {
         session = hibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public void addPoruchenie(Employee employee){
+    public void addPoruchenie(Poruchenie poruchenie){
         session.beginTransaction();
-        session.save(employee);
+        session.save(poruchenie);
         session.getTransaction().commit();
     }
 
-    public Employee getPoruchenie(long id){
-        Employee emp = session.load(Employee.class, id);
-        return emp;
+    public Poruchenie getPoruchenie(long id){
+        Poruchenie poruchenie = session.load(Poruchenie.class, id);
+        return poruchenie;
     }
 
-    public void updatePoruchenie(Employee employee){
+    public void updatePoruchenie(Poruchenie poruchenie){
         session.beginTransaction();
-        session.update(employee);
+        session.update(poruchenie);
         session.getTransaction().commit();
     }
 
-    public void deletePoruchenie(Employee employee){
+    public void deletePoruchenie(Poruchenie poruchenie){
         session.beginTransaction();
-        session.delete(employee);
+        session.delete(poruchenie);
         session.getTransaction().commit();
     }
 

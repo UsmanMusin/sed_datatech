@@ -1,5 +1,6 @@
 package dao;
 
+import model.Department;
 import model.Employee;
 import org.hibernate.Session;
 import util.hibernateUtil;
@@ -14,26 +15,26 @@ public class DepartmentDAO {
         session = hibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public void addDepartment(Employee employee){
+    public void addDepartment(Department department){
         session.beginTransaction();
-        session.save(employee);
+        session.save(department);
         session.getTransaction().commit();
     }
 
-    public Employee getDepartment(long id){
-        Employee emp = session.load(Employee.class, id);
-        return emp;
+    public Department getDepartment(long id){
+        Department department = session.load(Department.class, id);
+        return department;
     }
 
-    public void updateDepartment(Employee employee){
+    public void updateDepartment(Department department){
         session.beginTransaction();
-        session.update(employee);
+        session.update(department);
         session.getTransaction().commit();
     }
 
-    public void deleteDepartment(Employee employee){
+    public void deleteDepartment(Department department){
         session.beginTransaction();
-        session.delete(employee);
+        session.delete(department);
         session.getTransaction().commit();
     }
 
