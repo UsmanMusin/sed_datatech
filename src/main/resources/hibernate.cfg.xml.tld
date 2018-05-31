@@ -16,7 +16,7 @@
         <mapping class="model.Employee"/>
         <mapping class="model.Organization"/>
         <mapping class="model.Department"/>
-        <mapping class="model.Poruchenie"/>
+        <mapping class="model.Assignment"/>
 
 
     </session-factory>
