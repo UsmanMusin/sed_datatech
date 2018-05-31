@@ -16,12 +16,12 @@ public class Assignment {
     private Employee author;
 
     @ManyToMany
-    private Set<Employee> ispolniteli;
+    private Set<Employee> executors;
 
-    private int srok;
-    private boolean kontrol;
+    private int time;
+    private boolean control;
     private String text;
-    private boolean ispolnenie;
+    private boolean execution;
     private String status;
 
     public Assignment() {
@@ -51,28 +51,28 @@ public class Assignment {
         this.author = author;
     }
 
-    public Set<Employee> getIspolnitel() {
-        return ispolniteli;
+    public Set<Employee> getExecutors() {
+        return executors;
     }
 
-    public void setIspolnitel(Set<Employee> ispolnitel) {
-        this.ispolniteli = ispolnitel;
+    public void setExecutors(Set<Employee> executors) {
+        this.executors = executors;
     }
 
-    public int getSrok() {
-        return srok;
+    public int getTime() {
+        return time;
     }
 
-    public void setSrok(int srok) {
-        this.srok = srok;
+    public void setTime(int time) {
+        this.time = time;
     }
 
-    public boolean isKontrol() {
-        return kontrol;
+    public boolean getControl() {
+        return control;
     }
 
-    public void setKontrol(boolean kontrol) {
-        this.kontrol = kontrol;
+    public void setControl(boolean control) {
+        this.control = control;
     }
 
     public String getText() {
@@ -83,12 +83,12 @@ public class Assignment {
         this.text = text;
     }
 
-    public boolean isIspolnenie() {
-        return ispolnenie;
+    public boolean getExecution() {
+        return execution;
     }
 
-    public void setIspolnenie(boolean ispolnenie) {
-        this.ispolnenie = ispolnenie;
+    public void setExecution(boolean execution) {
+        this.execution = execution;
     }
 
     public String getStatus() {
@@ -101,8 +101,8 @@ public class Assignment {
 
     @Override
     public String toString(){
-        return "\nPoruchenie:\n" + "theme: " + theme + "\nauthor:" + author +
-                "\nispolniteli: " + ispolniteli + "\nsrok: " + srok + "\nkontrol: " + kontrol +
-                "\ntext: " + text + "\nispolnenie: " + ispolnenie + "\nstatus: " + status;
+        return "\nAssignment:\n" + "theme: " + theme + "\nauthor:" + author +
+                "\nexecutors: " + executors + "\ntime: " + time + "\ncontrol: " + control +
+                "\ntext: " + text + "\nexecution: " + execution + "\nstatus: " + status;
     }
 }

@@ -12,7 +12,7 @@ public class Department {
     private String name;
     private String contacts;
     @OneToOne
-    private Employee rukovoditel;
+    private Employee manager;
 
     @ManyToOne
     private Organization organization;
@@ -44,25 +44,25 @@ public class Department {
         this.contacts = contacts;
     }
 
-    public Employee getRukovoditel() {
-        return rukovoditel;
+    public Employee getManager() {
+        return manager;
     }
 
-    public void setRukovoditel(Employee rukovoditel) {
-        this.rukovoditel = rukovoditel;
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
 
-    public Organization getOrganizacia() {
+    public Organization getOrganization() {
         return organization;
     }
 
-    public void setOrganizacia(Organization organizacia) {
-        this.organization = organizacia;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     @Override
     public String toString(){
         return "\nDepartment:\n" + "name: " + name + "\ncontacts:" + contacts +
-                "\nrukovoditel: " + rukovoditel + "\norganization: " + organization;
+                "\nmanager: " + manager + "\norganization: " + organization;
     }
 }

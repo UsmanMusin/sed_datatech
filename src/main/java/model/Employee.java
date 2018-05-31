@@ -12,10 +12,10 @@ public class Employee {
     private String name;
     private String surname;
     private String middleName;
-    private String dolzhnost;
+    private String position;
 
     @ManyToOne
-    private Department empDepartment;
+    private Department department;
 
 
     public Employee() {
@@ -37,12 +37,12 @@ public class Employee {
         return middleName;
     }
 
-    public String getDolzhnost() {
-        return dolzhnost;
+    public String getPosition() {
+        return position;
     }
 
     public Department getDepartment() {
-        return empDepartment;
+        return department;
     }
 
     public void setId(int id) {
@@ -61,18 +61,18 @@ public class Employee {
         this.middleName = middleName;
     }
 
-    public void setDolzhnost(String dolzhnost) {
-        this.dolzhnost = dolzhnost;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public void setDepartment(Department department) {
-        this.empDepartment = department;
+        this.department = department;
     }
 
     @Override
     public String toString(){
         return "\nEmployee:\n" + "name: " + name + "\nsurname:" + surname +
-                "\nmiddlename: " + middleName + "\ndolzhnost: " + dolzhnost +
-                "\ndepartment: " + empDepartment;
+                "\nmiddlename: " + middleName + "\nposition: " + position+
+                "\ndepartment: " + department;
     }
 }

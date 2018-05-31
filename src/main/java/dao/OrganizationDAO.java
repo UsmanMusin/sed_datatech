@@ -1,53 +1,41 @@
 package dao;
 
-import model.Employee;
 import model.Organization;
-import org.hibernate.Session;
-import util.hibernateUtil;
-
 import javax.ejb.Stateless;
-import java.util.ArrayList;
-import java.util.Collection;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
 public class OrganizationDAO {
-    private Session session;
+    @PersistenceContext
+    EntityManager em;
 
-    public OrganizationDAO() {
-        session = hibernateUtil.getSessionFactory().getCurrentSession();
+    public OrganizationDAO(){
+
     }
 
     public void addOrganization(Organization organization){
-        session.beginTransaction();
-        session.save(organization);
-        session.getTransaction().commit();
+        em.persist(organization);
     }
 
     public Organization getOrganization(long id){
-        Organization org = session.load(Organization.class, id);
+        Organization org = em.find(Organization.class, id);
         return org;
     }
 
-    public Collection<Organization> getOrgList(){
-        session.beginTransaction();
-        List<Organization> department = new ArrayList<Organization>();
-        department = session.createCriteria(Organization.class).list();
-        session.getTransaction().commit();
-        return department;
+    public List<Organization> getOrgList(){
+        List<Organization> res = em.createQuery("select o from Organization o",Organization.class).getResultList();
+        return res;
     }
 
     public void updateOrganization(Organization organization){
-        session.beginTransaction();
-        session.saveOrUpdate(organization);
-        session.getTransaction().commit();
+        em.merge(organization);
     }
 
     public void deleteOrganization(long id){
-        session.beginTransaction();
-        Organization org = session.load(Organization.class, id);
-        session.delete(org);
-        session.getTransaction().commit();
+        Organization org = em.find(Organization.class, id);
+        em.remove(org);
     }
 
 

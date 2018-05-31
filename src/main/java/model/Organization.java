@@ -13,7 +13,14 @@ public class Organization {
     private long id;
 
     @OneToOne
-    private Employee rukovoditel;
+    private Employee manager;
+
+    private String name;
+    private String legalAddress;
+    private String physicalAddress;
+
+    public Organization() {
+    }
 
     public String getName() {
         return name;
@@ -21,13 +28,6 @@ public class Organization {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    private String name;
-    private String yurAddress;
-    private String fizAddress;
-
-    public Organization() {
     }
 
     public long getId() {
@@ -38,33 +38,33 @@ public class Organization {
         this.id = id;
     }
 
-    public Employee getRukovoditel() {
-        return rukovoditel;
+    public Employee getManager() {
+        return manager;
     }
 
-    public void setRukovoditel(Employee rukovoditel) {
-        this.rukovoditel = rukovoditel;
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
 
-    public String getYurAddress() {
-        return yurAddress;
+    public String getLegalAddress() {
+        return legalAddress;
     }
 
-    public void setYurAddress(String yurAddress) {
-        this.yurAddress = yurAddress;
+    public void setLegalAddress(String legalAddress) {
+        this.legalAddress = legalAddress;
     }
 
-    public String getFizAddress() {
-        return fizAddress;
+    public String getPhysicalAddress() {
+        return physicalAddress;
     }
 
-    public void setFizAddress(String fizAddress) {
-        this.fizAddress = fizAddress;
+    public void setPhysicalAddress(String physicalAddress) {
+        this.physicalAddress = physicalAddress;
     }
 
     @Override
     public String toString(){
-        return "\nOrganization:\n" + "name: " + name + "\nrukovoditel:" + rukovoditel +
-                "\nyur.Address: " + yurAddress + "\nfiz.Address: " + fizAddress;
+        return "\nOrganization:\n" + "name: " + name + "\nmanager:" + manager +
+                "\nlegalAddress: " + legalAddress + "\nphysicalAddress: " + physicalAddress;
     }
 }
