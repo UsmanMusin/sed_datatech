@@ -1,42 +1,38 @@
 package dao;
 
-import model.Employee;
-import model.Poruchenie;
+import model.Assignment;
 import org.hibernate.Session;
 import util.hibernateUtil;
 
 import javax.ejb.Stateless;
 
 @Stateless
-public class PoruchenieDAO {
+public class AssignmentDAO {
     private Session session;
 
-    public PoruchenieDAO() {
+    public AssignmentDAO() {
         session = hibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public void addPoruchenie(Poruchenie poruchenie){
+    public void addAssignment(Assignment assignment){
         session.beginTransaction();
-        session.save(poruchenie);
+        session.save(assignment);
         session.getTransaction().commit();
     }
 
-    public Poruchenie getPoruchenie(long id){
-         return session.load(Poruchenie.class, id);
+    public Assignment getAssignment(long id){
+         return session.load(Assignment.class, id);
     }
 
-    public void updatePoruchenie(Poruchenie poruchenie){
+    public void updateAssignment(Assignment assignment){
         session.beginTransaction();
-        session.update(poruchenie);
+        session.update(assignment);
         session.getTransaction().commit();
     }
 
-    public void deletePoruchenie(Poruchenie poruchenie){
+    public void deleteAssignment(Assignment assignment){
         session.beginTransaction();
-        session.delete(poruchenie);
+        session.delete(assignment);
         session.getTransaction().commit();
     }
-
-
-
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Poruchenie {
+public class Assignment {
 
     @Id
     @GeneratedValue
@@ -24,7 +24,7 @@ public class Poruchenie {
     private boolean ispolnenie;
     private String status;
 
-    public Poruchenie() {
+    public Assignment() {
     }
 
     public long getId() {
