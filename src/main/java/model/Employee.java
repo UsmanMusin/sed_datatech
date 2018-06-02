@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -17,6 +18,8 @@ public class Employee {
     @ManyToOne
     private Department department;
 
+    @ManyToMany(mappedBy = "executors")
+    private Set<Assignment> assignmentSet;
 
     public Employee() {
     }

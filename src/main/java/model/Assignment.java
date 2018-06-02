@@ -16,7 +16,11 @@ public class Assignment {
     private Employee author;
 
     @ManyToMany
+    @JoinTable(name="assignments_executors",
+            joinColumns = @JoinColumn(name="assignment_id", referencedColumnName="id"),
+            inverseJoinColumns = @JoinColumn(name="executor_id", referencedColumnName="id"))
     private Set<Employee> executors;
+
 
     private int time;
     private boolean control;

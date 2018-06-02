@@ -1,9 +1,7 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Organization {
@@ -14,6 +12,9 @@ public class Organization {
 
     @OneToOne
     private Employee manager;
+
+    @OneToMany
+    private Set<Department> departmentSet;
 
     private String name;
     private String legalAddress;

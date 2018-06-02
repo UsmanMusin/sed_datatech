@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Department {
@@ -11,11 +12,12 @@ public class Department {
 
     private String name;
     private String contacts;
+
     @OneToOne
     private Employee manager;
 
-    @ManyToOne
-    private Organization organization;
+    @OneToMany
+    private Set<Employee> employeeSet;
 
     public Department() {
     }
@@ -52,17 +54,9 @@ public class Department {
         this.manager = manager;
     }
 
-    public Organization getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
-
     @Override
     public String toString(){
         return "\nDepartment:\n" + "name: " + name + "\ncontacts:" + contacts +
-                "\nmanager: " + manager + "\norganization: " + organization;
+                "\nmanager: " + manager;
     }
 }
