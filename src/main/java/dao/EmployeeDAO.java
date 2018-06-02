@@ -1,42 +1,41 @@
 package dao;
 
 import model.Employee;
-import org.hibernate.Session;
-import util.hibernateUtil;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class EmployeeDAO {
-    private Session session;
+    @PersistenceContext
+    EntityManager em;
 
-    public EmployeeDAO() {
-        session = hibernateUtil.getSessionFactory().getCurrentSession();
+    public EmployeeDAO(){
     }
 
     public void addEmployee(Employee employee){
-        session.beginTransaction();
-        session.save(employee);
-        session.getTransaction().commit();
+        em.persist(employee);
     }
 
     public Employee getEmployee(long id){
-        Employee emp = session.load(Employee.class, id);
+        Employee emp = em.find(Employee.class, id);
         return emp;
     }
 
+    public List<Employee> getEmpList(){
+        List<Employee> res = em.createQuery("select e from Employee e",Employee.class).getResultList();
+        return res;
+    }
+
     public void updateEmployee(Employee employee){
-        session.beginTransaction();
-        session.update(employee);
-        session.getTransaction().commit();
+        em.merge(employee);
     }
 
-    public void deleteEmployee(Employee employee){
-        session.beginTransaction();
-        session.delete(employee);
-        session.getTransaction().commit();
+    public void deleteEmployee(long id){
+        Employee emp = em.find(Employee.class, id);
+        em.remove(emp);
     }
-
-
 
 }

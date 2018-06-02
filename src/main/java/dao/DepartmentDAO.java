@@ -1,42 +1,42 @@
 package dao;
 
 import model.Department;
-import model.Employee;
-import org.hibernate.Session;
-import util.hibernateUtil;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class DepartmentDAO {
-    private Session session;
+    @PersistenceContext
+    EntityManager em;
 
-    public DepartmentDAO() {
-        session = hibernateUtil.getSessionFactory().getCurrentSession();
+    public DepartmentDAO(){
+
     }
 
     public void addDepartment(Department department){
-        session.beginTransaction();
-        session.save(department);
-        session.getTransaction().commit();
+        em.persist(department);
     }
 
     public Department getDepartment(long id){
-        return session.load(Department.class, id);
+        Department dep = em.find(Department.class, id);
+        return dep;
+    }
+
+    public List<Department> getDepList(){
+        List<Department> res = em.createQuery("select d from Department d",Department.class).getResultList();
+        return res;
     }
 
     public void updateDepartment(Department department){
-        session.beginTransaction();
-        session.update(department);
-        session.getTransaction().commit();
+        em.merge(department);
     }
 
-    public void deleteDepartment(Department department){
-        session.beginTransaction();
-        session.delete(department);
-        session.getTransaction().commit();
+    public void deleteDepartment(long id){
+        Department dep = em.find(Department.class, id);
+        em.remove(dep);
     }
-
-
 
 }

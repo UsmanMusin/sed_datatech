@@ -1,38 +1,40 @@
 package dao;
 
 import model.Assignment;
-import org.hibernate.Session;
-import util.hibernateUtil;
-
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class AssignmentDAO {
-    private Session session;
+    @PersistenceContext
+    EntityManager em;
 
-    public AssignmentDAO() {
-        session = hibernateUtil.getSessionFactory().getCurrentSession();
+    public AssignmentDAO(){
+
     }
 
     public void addAssignment(Assignment assignment){
-        session.beginTransaction();
-        session.save(assignment);
-        session.getTransaction().commit();
+        em.persist(assignment);
     }
 
     public Assignment getAssignment(long id){
-         return session.load(Assignment.class, id);
+        Assignment assign = em.find(Assignment.class, id);
+        return assign;
+    }
+
+    public List<Assignment> getAssignList(){
+        List<Assignment> res = em.createQuery("select a from Assignment a",Assignment.class).getResultList();
+        return res;
     }
 
     public void updateAssignment(Assignment assignment){
-        session.beginTransaction();
-        session.update(assignment);
-        session.getTransaction().commit();
+        em.merge(assignment);
     }
 
-    public void deleteAssignment(Assignment assignment){
-        session.beginTransaction();
-        session.delete(assignment);
-        session.getTransaction().commit();
+    public void deleteAssignment(long id){
+        Assignment assign = em.find(Assignment.class, id);
+        em.remove(assign);
     }
 }
