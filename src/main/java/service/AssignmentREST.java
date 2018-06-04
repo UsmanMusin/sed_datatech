@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Collection;
 
-@Path("/employee")
+@Path("/assignment")
 @Stateless
 public class AssignmentREST {
 

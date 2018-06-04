@@ -17,6 +17,16 @@ public class EmployeeREST {
     private EmployeeDAO employeeDAO;
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Employee getEmp(){
+        Employee employee = new Employee();
+        employee.setId(1);
+        employee.setName("inef");
+        employee.setMiddleName("efaef");
+        return employee;
+    }
+
+    @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Employee getEmpById(@PathParam("id") long id){

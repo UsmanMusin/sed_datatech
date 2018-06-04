@@ -24,6 +24,15 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(String name, String surname, String middleName, String position, Department department, Set<Assignment> assignmentSet) {
+        this.name = name;
+        this.surname = surname;
+        this.middleName = middleName;
+        this.position = position;
+        this.department = department;
+        this.assignmentSet = assignmentSet;
+    }
+
     public long getId() {
         return id;
     }

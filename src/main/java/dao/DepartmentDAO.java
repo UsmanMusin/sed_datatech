@@ -13,7 +13,6 @@ public class DepartmentDAO {
     EntityManager em;
 
     public DepartmentDAO(){
-
     }
 
     public void addDepartment(Department department){

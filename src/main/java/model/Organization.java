@@ -23,6 +23,14 @@ public class Organization {
     public Organization() {
     }
 
+    public Organization(Employee manager, Set<Department> departmentSet, String name, String legalAddress, String physicalAddress) {
+        this.manager = manager;
+        this.departmentSet = departmentSet;
+        this.name = name;
+        this.legalAddress = legalAddress;
+        this.physicalAddress = physicalAddress;
+    }
+
     public String getName() {
         return name;
     }
