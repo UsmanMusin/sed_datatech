@@ -43,6 +43,7 @@ public class EmployeeREST {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addEmp(Employee employee){
+
         employeeDAO.addEmployee(employee);
         return Response.status(200).type("application/json").entity(employee).build();
     }

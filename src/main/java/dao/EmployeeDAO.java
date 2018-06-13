@@ -5,11 +5,12 @@ import model.Employee;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
 public class EmployeeDAO {
-    @PersistenceContext
+    @PersistenceContext(unitName = "derby_DB")
     EntityManager em;
 
     public EmployeeDAO(){
@@ -24,10 +25,12 @@ public class EmployeeDAO {
         return emp;
     }
 
+
     public List<Employee> getEmpList(){
         List<Employee> res = em.createQuery("select e from Employee e",Employee.class).getResultList();
         return res;
     }
+
 
     public void updateEmployee(Employee employee){
         em.merge(employee);

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Stateless
 public class OrganizationDAO {
-    @PersistenceContext
+    @PersistenceContext(unitName = "derby_DB")
     EntityManager em;
 
     public OrganizationDAO(){

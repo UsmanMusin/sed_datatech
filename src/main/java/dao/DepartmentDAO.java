@@ -9,7 +9,7 @@ import java.util.List;
 
 @Stateless
 public class DepartmentDAO {
-    @PersistenceContext
+    @PersistenceContext(unitName = "derby_DB")
     EntityManager em;
 
     public DepartmentDAO(){
